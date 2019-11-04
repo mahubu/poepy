@@ -22,10 +22,16 @@ window_size_y = DEFAULT_FONT_SIZE * 3
 
 
 def setup():
+    """
+    Set up the displaying window.
+    """
     size(window_size_x, window_size_y)
 
 
 def draw():
+    """
+    Write & read the sentences.
+    """
     global start_time, from_sentence, to_sentence
     background(255)
 

@@ -15,6 +15,13 @@ DEFAULT_FONT_URL = 'http://www.misprintedtype.com/fonts/freeware/'
 
 
 def get_fonts(font_directory=DEFAULT_FONT_DIRECTORY, font_url=DEFAULT_FONT_URL):
+    """
+    If needed, download the font from the given URL and install them into the given directory.
+
+    :param font_directory: the installation directory for the fonts.
+    :type font_url: the URL where the fonts can be retrieved from.
+
+    """
     if not exists(font_directory):
         mkdir(font_directory)
 

@@ -8,6 +8,11 @@ engine.setProperty('rate', DEFAULT_SPEECH_RATE)
 
 
 def say(sentence):
+    """
+    Adds a sentence to speak.
+
+    @param sentence: the sentence to read.
+    """
     engine.say(str(sentence))
     engine.runAndWait()
 
