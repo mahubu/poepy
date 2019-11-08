@@ -6,6 +6,8 @@ from font import DEFAULT_FONT_SIZE, get_fonts
 from sentence import get_sentences, get_corresponding_letter, enumerate_sentence
 from speech import say
 
+DEFAULT_BACKGROUND_COLOR = 255  # White
+
 fonts = get_fonts()
 sentences = get_sentences(fonts)
 
@@ -33,7 +35,7 @@ def draw():
     Write & read the sentences.
     """
     global start_time, from_sentence, to_sentence
-    background(255)
+    background(DEFAULT_BACKGROUND_COLOR)
 
     if from_sentence is None:
         from_sentence = sentences.pop(0)
@@ -68,11 +70,10 @@ def draw():
                     letter.display()
                     letter.regroup()
             else:
-                for width, letter in enumerate_sentence(to_sentence.letters):
+                for x, letter in enumerate_sentence(to_sentence.letters):
                     letter.display()
-                    # TODO add DEFAULT_FONT_SIZE ?
-                    letter.x = width + DEFAULT_FONT_SIZE
-                    letter.home_x = width + DEFAULT_FONT_SIZE
+                    letter.x = x + DEFAULT_FONT_SIZE
+                    letter.home_x = x + DEFAULT_FONT_SIZE
                 say(to_sentence)
                 from_sentence = to_sentence
                 to_sentence = None

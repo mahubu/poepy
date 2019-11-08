@@ -6,6 +6,8 @@ from requests import get
 
 from font import DEFAULT_FONT_SIZE, get_fonts
 
+DEFAULT_SENTENCE_COLOR = 0  # Black
+DEFAULT_SENTENCE_ALIGNMENT = 'LEFT'
 DEFAULT_SENTENCE_URL = 'https://www.eternels-eclairs.fr/haikus-japonais.php'
 
 
@@ -60,8 +62,8 @@ class Letter:
         """
         Display the letter on the window.
         """
-        fill(0)
-        text_align("LEFT")
+        fill(DEFAULT_SENTENCE_COLOR)
+        text_align(DEFAULT_SENTENCE_ALIGNMENT)
         text_font(self.font)
         text(self.character, (self.x, self.y))
 
@@ -122,7 +124,6 @@ def create_sentence(characters, fonts):
     :param fonts: the fonst used to write the sentence.
     :return: the sentence.
     """
-    # TODO initialization with DEFAULT_FONT_SIZE ?
     position_x = DEFAULT_FONT_SIZE
     letters = []
     for character in characters:
@@ -147,7 +148,6 @@ def get_sentences(sentence_fonts, sentence_url=DEFAULT_SENTENCE_URL):
     for element in soup.find_all('p', class_='poeme_texte'):
         t = element.get_text()
         for line in t.splitlines():
-            # TODO replace needed ?
             verse = line.replace('\t', '')
             if verse.strip():
                 sentences.append(create_sentence(verse, sentence_fonts))
